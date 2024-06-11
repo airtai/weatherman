@@ -12,13 +12,6 @@ check_variable "TAG"
 check_variable "GITHUB_USERNAME"
 check_variable "GITHUB_PASSWORD"
 check_variable "DOMAIN"
-check_variable "DATABASE_URL"
-check_variable "PY_DATABASE_URL"
-check_variable "AZURE_API_VERSION"
-check_variable "AZURE_API_ENDPOINT"
-check_variable "AZURE_GPT35_MODEL"
-check_variable "AZURE_OPENAI_API_KEY"
-check_variable "TOGETHER_API_KEY"
 
 
 if [ ! -f key.pem ]; then
@@ -29,7 +22,7 @@ fi
 
 ssh_command="ssh -o StrictHostKeyChecking=no -i key.pem azureuser@$DOMAIN"
 
-container_name="fastagency"
+container_name="weatherman"
 log_file="${container_name}.log"
 
 echo "INFO: Capturing docker container logs"
@@ -44,7 +37,6 @@ $ssh_command "docker container prune -f || echo 'No stopped containers to delete
 
 echo "INFO: SCPing docker-compose.yaml"
 scp -i key.pem ./docker-compose.yaml azureuser@$DOMAIN:/home/azureuser/docker-compose.yaml
-scp -i key.pem -r ./etc azureuser@$DOMAIN:/home/azureuser
 
 echo "INFO: pulling docker image"
 $ssh_command "echo $GITHUB_PASSWORD | docker login -u '$GITHUB_USERNAME' --password-stdin '$REGISTRY'"
@@ -57,8 +49,5 @@ $ssh_command "docker system prune -f || echo 'No images to delete'"
 echo "INFO: starting docker containers"
 
 $ssh_command "export GITHUB_REPOSITORY='$GITHUB_REPOSITORY' TAG='$TAG' container_name='$container_name' \
-	DOMAIN='$DOMAIN' PY_DATABASE_URL='$PY_DATABASE_URL' DATABASE_URL='$DATABASE_URL' \
-    AZURE_API_VERSION='$AZURE_API_VERSION' AZURE_API_ENDPOINT='$AZURE_API_ENDPOINT' \
-    AZURE_GPT35_MODEL='$AZURE_GPT35_MODEL' AZURE_OPENAI_API_KEY='$AZURE_OPENAI_API_KEY' \
-    TOGETHER_API_KEY='$TOGETHER_API_KEY' \
+	DOMAIN='$DOMAIN' \
 	&& docker compose up -d"
