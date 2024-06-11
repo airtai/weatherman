@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  python-3.12:  # nosemgrep
+    image: mcr.microsoft.com/devcontainers/python:3.12
+    container_name: $USER-python-3.12-weatherman
+    volumes:
+      - ../../:/workspaces/weatherman:cached
+    command: sleep infinity
+    env_file:
+      - ../devcontainer.env
+    platform: linux/amd64
+    networks:
+      - weatherman-network
+
+networks:
+  weatherman-network:
+    name: "${USER}-weatherman-network"
