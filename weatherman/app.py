@@ -10,14 +10,13 @@ from pydantic import BaseModel
 logging.basicConfig(level=logging.INFO)
 
 host = environ.get("DOMAIN", "localhost")
-port = 9000
+port = 8000
 protocol = "http" if host == "localhost" else "https"
-
-app = FastAPI(
-    servers=[
-        {"url": f"{protocol}://{host}:{port}", "description": "Weather app server"}
-    ]
+base_url = (
+    f"{protocol}://{host}:{port}" if host == "localhost" else f"{protocol}://{host}"
 )
+
+app = FastAPI(servers=[{"url": base_url, "description": "Weather app server"}])
 
 
 class HourlyForecast(BaseModel):
