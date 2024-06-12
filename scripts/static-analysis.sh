@@ -6,7 +6,7 @@ echo "Running mypy..."
 mypy
 
 echo "Running bandit..."
-bandit -c pyproject.toml -r weatherman
+bandit -c pyproject.toml -r weatherapi
 
 echo "Running semgrep..."
 semgrep scan --config auto --error

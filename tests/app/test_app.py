@@ -2,7 +2,7 @@ import datetime
 
 from fastapi.testclient import TestClient
 
-from weatherman.app import app
+from weatherapi.app import app
 
 client = TestClient(app)
 
