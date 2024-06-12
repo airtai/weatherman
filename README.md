@@ -1,2 +1,2 @@
-# weatherman
-A weatherman api to be used with FastAgency
+# Weather API
+A simple weather API made for usage with FastAgency
