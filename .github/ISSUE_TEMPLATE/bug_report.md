@@ -13,7 +13,7 @@ Provide a clear and concise description of the bug.
 Include source code:
 
 ```python
-from weatherman.app import app
+from weatherapi.app import app
 ...
 ```
 

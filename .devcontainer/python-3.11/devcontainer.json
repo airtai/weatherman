@@ -6,7 +6,7 @@
     "service": "python-3.11",
     "forwardPorts": [],
     "shutdownAction": "stopCompose",
-    "workspaceFolder": "/workspaces/weatherman",
+    "workspaceFolder": "/workspaces/weatherapi",
     "remoteEnv": {},
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {

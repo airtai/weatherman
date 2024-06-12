@@ -36,13 +36,13 @@ After activating the virtual environment as described above, run:
 pip install -e ".[dev]"
 ```
 
-This will install all the dependencies and your local **WeatherMan** in your virtual environment.
+This will install all the dependencies and your local **WeatherAPI** in your virtual environment.
 
-### Using Your local **WeatherMan**
+### Using Your local **WeatherAPI**
 
-If you create a Python file that imports and uses **WeatherMan**, and run it with the Python from your local environment, it will use your local **WeatherMan** source code.
+If you create a Python file that imports and uses **WeatherAPI**, and run it with the Python from your local environment, it will use your local **WeatherAPI** source code.
 
-Whenever you update your local **WeatherMan** source code, it will automatically use the latest version when you run your Python file again. This is because it is installed with `-e`.
+Whenever you update your local **WeatherAPI** source code, it will automatically use the latest version when you run your Python file again. This is because it is installed with `-e`.
 
 This way, you don't have to "install" your local version to be able to test every change.
 
@@ -50,7 +50,7 @@ This way, you don't have to "install" your local version to be able to test ever
 
 ### Pytest
 
-To run tests with your current **WeatherMan** application and Python environment, use:
+To run tests with your current **WeatherAPI** application and Python environment, use:
 
 ```bash
 pytest tests

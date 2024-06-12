@@ -11,7 +11,7 @@ x-logging: &default-logging
 
 version: "3.4"
 
-name: weatherman
+name: weatherapi
 services:
   fastapi-app:  # nosemgrep
     image: ghcr.io/${GITHUB_REPOSITORY}:${TAG}
@@ -22,8 +22,8 @@ services:
       - DOMAIN=${DOMAIN}
     logging: *default-logging
     networks:
-      - weatherman
+      - weatherapi
 
 networks:
-  weatherman:
-    name: weatherman
+  weatherapi:
+    name: weatherapi

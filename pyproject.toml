@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "weatherman"
-description = "WeatherMan: an API to use with FastAgency"
+name = "weatherapi"
+description = "WeatherAPI: A simple weather API made for usage with FastAgency"
 readme = "README.md"
 authors = [
     { name = "airt", email = "info@airt.ai" },
@@ -78,26 +78,26 @@ test-core = [
 ]
 
 testing = [
-    "weatherman[test-core]",
-    "weatherman[server]", # Uvicorn is needed for testing
+    "weatherapi[test-core]",
+    "weatherapi[server]", # Uvicorn is needed for testing
 ]
 
 dev = [
-    "weatherman[server,lint,testing]",
+    "weatherapi[server,lint,testing]",
     "pre-commit==3.7.1",
     "detect-secrets==1.5.0",
 ]
 
 [project.urls]
-Tracker = "https://github.com/airtai/weatherman/issues"
-Source = "https://github.com/airtai/weatherman"
+Tracker = "https://github.com/airtai/weatherapi/issues"
+Source = "https://github.com/airtai/weatherapi"
 Discord = "https://discord.gg/qFm6aSqq59"
 
 [project.scripts]
-# weatherman = "weatherman.__main__:cli"
+# weatherapi = "weatherapi.__main__:cli"
 
 [tool.hatch.version]
-path = "weatherman/__about__.py"
+path = "weatherapi/__about__.py"
 
 [tool.hatch.build]
 skip-excluded-dirs = true
@@ -110,15 +110,15 @@ exclude = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-only-include = ["weatherman"]
+only-include = ["weatherapi"]
 
 [tool.hatch.build.targets.wheel.sources]
 "src" = ""
-# "scripts" = "weatherman/templates"
+# "scripts" = "weatherapi/templates"
 
 [tool.mypy]
 
-files = ["weatherman", "tests"]
+files = ["weatherapi", "tests"]
 
 strict = true
 python_version = "3.9"
@@ -145,7 +145,7 @@ disallow_any_unimported = false
 fix = true
 line-length = 88
 # target-version = 'py39'
-include = ["weatherman/**/*.py", "weatherman/**/*.pyi", "tests/**/*.py", "pyproject.toml"]
+include = ["weatherapi/**/*.py", "weatherapi/**/*.pyi", "tests/**/*.py", "pyproject.toml"]
 exclude = ["docs/docs_src"]
 
 [tool.ruff.lint]
@@ -206,7 +206,7 @@ concurrency = [
     "thread"
 ]
 source = [
-    "weatherman",
+    "weatherapi",
 #    "tests",
 ]
 context = '${CONTEXT}'

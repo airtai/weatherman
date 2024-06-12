@@ -3,16 +3,16 @@ version: '3'
 services:
   python-3.9:  # nosemgrep
     image: mcr.microsoft.com/devcontainers/python:3.9
-    container_name: $USER-python-3.9-weatherman
+    container_name: $USER-python-3.9-weatherapi
     volumes:
-      - ../../:/workspaces/weatherman:cached
+      - ../../:/workspaces/weatherapi:cached
     command: sleep infinity
     env_file:
       - ../devcontainer.env
     platform: linux/amd64
     networks:
-      - weatherman-network
+      - weatherapi-network
 
 networks:
-  weatherman-network:
-    name: "${USER}-weatherman-network"
+  weatherapi-network:
+    name: "${USER}-weatherapi-network"

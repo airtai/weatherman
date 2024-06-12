@@ -1,14 +1,14 @@
 # Security Policy
 
-Security and stability are paramount for WeatherMan.
+Security and stability are paramount for WeatherAPI.
 
 Learn more below. 👇
 
 ## Versions
 
-The latest version of WeatherMan is actively supported.
+The latest version of WeatherAPI is actively supported.
 
-We strongly encourage you to write tests for your application and regularly update your WeatherMan version after confirming that your tests pass. This ensures you benefit from the latest features, bug fixes, and **security updates**.
+We strongly encourage you to write tests for your application and regularly update your WeatherAPI version after confirming that your tests pass. This ensures you benefit from the latest features, bug fixes, and **security updates**.
 
 ## Reporting a Vulnerability
 
