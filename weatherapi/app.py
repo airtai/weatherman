@@ -1,11 +1,15 @@
 import datetime
 import logging
 from os import environ
-from typing import List
+from typing import Annotated, List
 
 import python_weather
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
+
+from . import __version__
+
+__all__ = ["app"]
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,7 +20,11 @@ base_url = (
     f"{protocol}://{host}:{port}" if host == "localhost" else f"{protocol}://{host}"
 )
 
-app = FastAPI(servers=[{"url": base_url, "description": "Weather app server"}])
+app = FastAPI(
+    servers=[{"url": base_url, "description": "Weather app server"}],
+    version=__version__,
+    title="WeatherAPI",
+)
 
 
 class HourlyForecast(BaseModel):
@@ -37,8 +45,10 @@ class Weather(BaseModel):
     daily_forecasts: List[DailyForecast]
 
 
-@app.get("/")
-async def get_weather(city: str) -> Weather:
+@app.get("/", description="Get weather forecast for a given city")
+async def get_weather(
+    city: Annotated[str, Query(description="city for which forecast is requested")],
+) -> Weather:
     async with python_weather.Client(unit=python_weather.METRIC) as client:
         # fetch a weather forecast from a city
         weather = await client.get(city)
